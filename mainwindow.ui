@@ -230,7 +230,7 @@ color: rgb(255, 255, 255);</string>
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label_20">
+            <widget class="QLabel" name="satarTimeLabel">
              <property name="text">
               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;暂无功能&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
              </property>
@@ -242,7 +242,13 @@ color: rgb(255, 255, 255);</string>
        </layout>
       </item>
       <item row="1" column="0">
-       <widget class="QListWidget" name="listWidget"/>
+       <widget class="QListWidget" name="listWidget">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(60, 67, 83);
+color: rgb(60, 67, 83);
+border-color: rgba(255, 255, 255, 0);</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>
