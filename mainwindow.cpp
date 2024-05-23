@@ -2,12 +2,16 @@
 #include "ui_mainwindow.h"
 #include <string>
 
+bool isPressed = false;//鼠标是否点击
+QPoint curPos;//鼠标位置
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
     MainWindow::setWindowFlags(Qt::FramelessWindowHint);
+    setAttribute(Qt::WA_Hover);//鼠标追踪
 
 
 
@@ -43,7 +47,8 @@ MainWindow::MainWindow(QWidget *parent)
 
 
 
-    connect(ui->CloseWindow,&QPushButton::clicked,this,[=](){this->close();});
+    connect(ui->CloseWindow,&QPushButton::clicked,this,[=](){this->close();});//关闭窗口
+    connect(ui->SmallWindow,&QPushButton::clicked,this,[=](){this->showMinimized();});//窗口最小化
 }
 
 MainWindow::~MainWindow()
@@ -60,7 +65,29 @@ void MainWindow::closeEvent(QCloseEvent *event){
     event->ignore();//不处理
 }
 
+void MainWindow::mousePressEvent(QMouseEvent*event)
+{
+    if(event->button()==Qt::LeftButton) //如果鼠标左键按下
+    {
 
+        isPressed=true;
+        curPos=event->pos();    //记录当前的点击坐标
+    }
+}
+
+void MainWindow::mouseMoveEvent(QMouseEvent*event)
+{
+    if(isPressed) //如果鼠标左键按下
+    {
+        this->move(event->pos()-curPos+this->pos());    //窗口移动
+    }
+}
+
+//鼠标释放
+void MainWindow::mouseReleaseEvent(QMouseEvent*event)
+{
+    isPressed=false;
+}
 
 
 
