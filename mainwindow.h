@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "toolgroup.h"
 
 
 
@@ -15,6 +16,8 @@
 #include <QPushButton>
 #include <QMessageBox>
 #include <QProcess>
+#include <QStringList>
+#include <QStringListModel>
 
 
 #include <QDebug>
@@ -34,9 +37,10 @@ protected:
     void closeEvent(QCloseEvent *event);//关闭事件
     void mousePressEvent(QMouseEvent *event);//点击事件
     void mouseMoveEvent(QMouseEvent *event);//鼠标移动事件
-    void mouseReleaseEvent(QMouseEvent *event);//鼠标松开事件
+    void mouseReleaseEvent();//鼠标松开事件
 private:
-
     Ui::MainWindow *ui;
+
+    void listWidgetShow(QString listAddrs,bool isIndex);
 };
 #endif // MAINWINDOW_H
