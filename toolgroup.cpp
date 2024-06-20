@@ -21,7 +21,7 @@ ToolGroup::ToolGroup(QWidget *parent) :
 
     QDir dir(addrs);
     if(!dir.exists()){
-        QMessageBox::warning(this,"警告","找不到指定文件,可能会导致不显示工具,建议您重新安装");
+        QMessageBox::warning(this,"警告","找不到指定文件,可能会导致不显示工具,建议您重新安装-"+addrs);
     }
     renewList();
 
@@ -39,6 +39,35 @@ ToolGroup::ToolGroup(QWidget *parent) :
         if(homeAddrs!=addrs){
             addrs = QString::fromStdString(addrs.toStdString().substr(0,addrs.toStdString().rfind("/")));
             renewList();
+        }
+    });
+
+
+
+    connect(ui->pushButton,&QPushButton::clicked,this,[=](){//添加按钮
+        QString fileName = QFileDialog::getOpenFileName(this,tr("打开指定程序"), "选取文件", tr("Image Files (*.bat *.exe *.lnk)"));
+        if(strstr(fileName.toStdString().c_str(),QCoreApplication::applicationDirPath().toStdString().c_str())==NULL){
+            QMessageBox::warning(this,"警告","当前工具不在工具箱内!","确定","关闭");
+            return;
+        }else{
+            fileName.remove(QCoreApplication::applicationDirPath());
+            QString fileAddrs = fileName.mid(1,fileName.length());
+            int LNumber = 0;//计算/的数量
+            while (strstr(fileName.toStdString().c_str(),"/")!=NULL) {
+                LNumber++;
+                fileName = QString::fromStdString(fileName.toStdString().substr(0,fileName.toStdString().rfind("/")));
+            }
+            while(LNumber!=3){
+                LNumber--;
+                fileName += ".._";
+            }
+            fileAddrs = fileName + fileAddrs;
+            qDebug() << fileAddrs;
+
+            QFile file(addrs+"/"+fileAddrs.replace("/","_")+".tool");
+            file.open(QIODevice::WriteOnly);
+            file.close();
+            qDebug() << addrs+"/"+fileAddrs.replace("/","_")+".tool";
         }
     });
 }
@@ -133,7 +162,7 @@ void ToolGroup::renewList(){//刷新列表
 
         if(list[i].isDir()){//如果是文件夹
             newItem(i-j,list[i].fileName(),list[i],true);
-        }else if(suffix.compare("lnk")==0||suffix.compare("exe")==0){//如果后缀是快捷方式或exe
+        }else if(suffix.compare("lnk")==0||suffix.compare("exe")==0||suffix.compare("bat")==0){//如果后缀是快捷方式或exe
             newItem(i-j,list[i].fileName(),list[i],false);
         }else if(suffix.compare("tool")==0){
             QString Addrs_Tool = list[i].fileName().replace("_","/");

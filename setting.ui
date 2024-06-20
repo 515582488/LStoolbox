@@ -1,0 +1,1235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Setting</class>
+ <widget class="QWidget" name="Setting">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>700</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>700</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>700</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>工具箱设置</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QTabWidget" name="tabWidget">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>701</width>
+     <height>601</height>
+    </rect>
+   </property>
+   <property name="currentIndex">
+    <number>1</number>
+   </property>
+   <widget class="QWidget" name="tab">
+    <attribute name="title">
+     <string>基础</string>
+    </attribute>
+    <widget class="QDoubleSpinBox" name="diaphaneity">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>0</y>
+       <width>62</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="minimum">
+      <double>0.100000000000000</double>
+     </property>
+     <property name="maximum">
+      <double>1.000000000000000</double>
+     </property>
+     <property name="singleStep">
+      <double>0.100000000000000</double>
+     </property>
+     <property name="value">
+      <double>1.000000000000000</double>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>3</y>
+       <width>41</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>透明度</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="SaveMainSetting">
+     <property name="geometry">
+      <rect>
+       <x>616</x>
+       <y>499</y>
+       <width>81</width>
+       <height>80</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>保存设置</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tab_2">
+    <attribute name="title">
+     <string>样式</string>
+    </attribute>
+    <widget class="QTabWidget" name="tabWidget_2">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>698</width>
+       <height>577</height>
+      </rect>
+     </property>
+     <property name="currentIndex">
+      <number>4</number>
+     </property>
+     <widget class="QWidget" name="tab_3">
+      <attribute name="title">
+       <string>栏目背景</string>
+      </attribute>
+      <widget class="QCheckBox" name="LanMuPhotoMode">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>30</y>
+         <width>73</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>图片模式</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="LanMuPhotoLineEdit">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>30</y>
+         <width>571</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="LanMuPhotoXuanButton">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>641</x>
+         <y>30</y>
+         <width>52</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>选择文件</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="LanMuColorXuanButton">
+       <property name="geometry">
+        <rect>
+         <x>1</x>
+         <y>59</y>
+         <width>60</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>选取颜色</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="LanMuColorLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>59</y>
+         <width>621</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>rgb(53, 61, 72)</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_2">
+       <property name="geometry">
+        <rect>
+         <x>1</x>
+         <y>90</y>
+         <width>101</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>&lt;h2&gt;工具箱名字:&lt;/h2&gt;</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_3">
+       <property name="geometry">
+        <rect>
+         <x>1</x>
+         <y>1</y>
+         <width>121</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>&lt;h2&gt;软件背景样式:&lt;/h2&gt;</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="TitleColorButton">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>120</y>
+         <width>61</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>字体颜色</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="BoxNameStyleLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>120</y>
+         <width>621</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string>rgb(255, 255, 255)</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_4">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>160</y>
+         <width>101</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>&lt;h2&gt;分割线样式:&lt;/h2&gt;</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="BoxNameLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>105</x>
+         <y>90</y>
+         <width>587</width>
+         <height>27</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>LS工具箱</string>
+       </property>
+       <property name="maxLength">
+        <number>12</number>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_5">
+       <property name="geometry">
+        <rect>
+         <x>580</x>
+         <y>0</y>
+         <width>111</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::NoFrame</enum>
+       </property>
+       <property name="text">
+        <string>&lt;p style=&quot;color:red&quot;&gt;不懂莫乱填请点按钮&lt;p&gt;</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="FenGeColorButton">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>190</y>
+         <width>61</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>字体颜色</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="FenGeColorLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>190</y>
+         <width>621</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>rgb(255, 255, 255)</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="SaveStyleLanBackgroundSetting">
+       <property name="geometry">
+        <rect>
+         <x>610</x>
+         <y>470</y>
+         <width>81</width>
+         <height>80</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>保存设置</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_10">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>220</y>
+         <width>121</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>&lt;h2&gt;目录背景样式:&lt;/h2&gt;</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="ListColorLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>69</x>
+         <y>280</y>
+         <width>621</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>rgb(30, 34, 43)</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="ListPhotoMode">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>251</y>
+         <width>73</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>图片模式</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="ListPhotoLineEdit">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>69</x>
+         <y>251</y>
+         <width>571</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="ListColorXuanButto">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>280</y>
+         <width>60</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>选取颜色</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="ListPhotoXuanButton">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>640</x>
+         <y>250</y>
+         <width>52</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>选择文件</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="tab_4">
+      <attribute name="title">
+       <string>栏目按钮</string>
+      </attribute>
+      <widget class="QLineEdit" name="ButtonStyleLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>30</y>
+         <width>691</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>QPushButton{background-color: rgba(255, 255, 255, 0);} QPushButton:hover{background-color: rgba(255, 255, 255, 60)}</string>
+       </property>
+       <property name="maxLength">
+        <number>9999</number>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_6">
+       <property name="geometry">
+        <rect>
+         <x>1</x>
+         <y>0</y>
+         <width>81</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>&lt;h2&gt;按钮背景:&lt;/h2&gt;</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_7">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>70</y>
+         <width>81</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>&lt;h2&gt;按钮字体:&lt;/h2&gt;</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="ButtonFontColorXuan">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>100</y>
+         <width>61</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>字体颜色</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="ButtonFontColorLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>100</y>
+         <width>621</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>rgb(255, 255, 255)</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_8">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>140</y>
+         <width>81</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>&lt;h2&gt;按钮的字:&lt;/h2&gt;</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="List1">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>170</y>
+         <width>347</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>硬件信息</string>
+       </property>
+       <property name="maxLength">
+        <number>40</number>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="List2">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>225</y>
+         <width>347</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>CPU工具</string>
+       </property>
+       <property name="maxLength">
+        <number>40</number>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="List3">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>280</y>
+         <width>347</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>主板工具</string>
+       </property>
+       <property name="maxLength">
+        <number>40</number>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="List4">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>335</y>
+         <width>347</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>内存工具</string>
+       </property>
+       <property name="maxLength">
+        <number>40</number>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="List5">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>390</y>
+         <width>347</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>显卡工具</string>
+       </property>
+       <property name="maxLength">
+        <number>40</number>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="List6">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>440</y>
+         <width>347</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>磁盘工具</string>
+       </property>
+       <property name="maxLength">
+        <number>40</number>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="List7">
+       <property name="geometry">
+        <rect>
+         <x>348</x>
+         <y>170</y>
+         <width>347</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>屏幕工具</string>
+       </property>
+       <property name="maxLength">
+        <number>40</number>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="List8">
+       <property name="geometry">
+        <rect>
+         <x>348</x>
+         <y>225</y>
+         <width>347</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>综合工具</string>
+       </property>
+       <property name="maxLength">
+        <number>40</number>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="List9">
+       <property name="geometry">
+        <rect>
+         <x>348</x>
+         <y>280</y>
+         <width>347</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>外设工具</string>
+       </property>
+       <property name="maxLength">
+        <number>40</number>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="List10">
+       <property name="geometry">
+        <rect>
+         <x>348</x>
+         <y>335</y>
+         <width>347</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>烤鸡工具</string>
+       </property>
+       <property name="maxLength">
+        <number>40</number>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="List11">
+       <property name="geometry">
+        <rect>
+         <x>348</x>
+         <y>390</y>
+         <width>347</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>游戏工具</string>
+       </property>
+       <property name="maxLength">
+        <number>40</number>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="List12">
+       <property name="geometry">
+        <rect>
+         <x>348</x>
+         <y>440</y>
+         <width>347</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>11</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>其他工具</string>
+       </property>
+       <property name="maxLength">
+        <number>40</number>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="SaveStyleLanButtonSetting">
+       <property name="geometry">
+        <rect>
+         <x>610</x>
+         <y>470</y>
+         <width>81</width>
+         <height>80</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>保存设置</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="tab_5">
+      <attribute name="title">
+       <string>顶部栏</string>
+      </attribute>
+      <widget class="QLabel" name="label_9">
+       <property name="geometry">
+        <rect>
+         <x>1</x>
+         <y>2</y>
+         <width>131</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>&lt;h2&gt;栏目背景样式:&lt;/h2&gt;</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="DingBuMode">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>31</y>
+         <width>73</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>图片模式</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="DingBuColorButton">
+       <property name="geometry">
+        <rect>
+         <x>1</x>
+         <y>60</y>
+         <width>60</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>选取颜色</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="DingBuPhotoLineEdit">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>31</y>
+         <width>571</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="DingBuColorLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>60</y>
+         <width>621</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>rgb(60, 67, 83);</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="DingBuPhotoXuanButton">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>640</x>
+         <y>31</y>
+         <width>52</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>选择文件</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_18">
+       <property name="geometry">
+        <rect>
+         <x>1</x>
+         <y>90</y>
+         <width>81</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>&lt;h2&gt;按钮样式:&lt;/h2&gt;</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="DingBuButtonColorLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>120</y>
+         <width>691</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>QPushButton{background-color: rgba(255, 255, 255, 0);font: 15pt &quot;Arial&quot;;} QPushButton:hover{background-color: rgba(255, 255, 255, 60)}</string>
+       </property>
+       <property name="maxLength">
+        <number>9999</number>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="SaveStyleDingBuSetting">
+       <property name="geometry">
+        <rect>
+         <x>610</x>
+         <y>470</y>
+         <width>81</width>
+         <height>80</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>保存设置</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="tab_6">
+      <attribute name="title">
+       <string>状态栏</string>
+      </attribute>
+      <widget class="QLabel" name="label_19">
+       <property name="geometry">
+        <rect>
+         <x>1</x>
+         <y>1</y>
+         <width>141</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>&lt;h2&gt;状态栏背景样式:&lt;/h2&gt;</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="StatePhotoButton">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>641</x>
+         <y>30</y>
+         <width>52</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>选择文件</string>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="StateMode">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>30</y>
+         <width>73</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>图片模式</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="StateColorButton">
+       <property name="geometry">
+        <rect>
+         <x>1</x>
+         <y>59</y>
+         <width>60</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>选取颜色</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="StatePhotoLineEdit">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>30</y>
+         <width>571</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="StateColorLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>59</y>
+         <width>621</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>rgb(60, 67, 83);</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_20">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>80</y>
+         <width>101</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>&lt;h2&gt;状态栏字体:&lt;/h2&gt;</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_31">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>110</y>
+         <width>61</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>字体颜色</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lineEdit_54">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>110</y>
+         <width>621</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="SaveStyleStateSetting">
+       <property name="geometry">
+        <rect>
+         <x>610</x>
+         <y>470</y>
+         <width>81</width>
+         <height>80</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>保存设置</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="tab_7">
+      <attribute name="title">
+       <string>软件栏</string>
+      </attribute>
+      <widget class="QLabel" name="label_21">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>101</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>&lt;h2&gt;软件栏字体:&lt;/h2&gt;</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="RuanColorLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>30</y>
+         <width>621</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_32">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>30</y>
+         <width>61</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>字体颜色</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="SaveStyleRuanSetting">
+       <property name="geometry">
+        <rect>
+         <x>610</x>
+         <y>470</y>
+         <width>81</width>
+         <height>80</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>保存设置</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="StateColorButton_3">
+       <property name="geometry">
+        <rect>
+         <x>1</x>
+         <y>128</y>
+         <width>60</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>选取颜色</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="StatePhotoButton_3">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>641</x>
+         <y>99</y>
+         <width>52</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>选择文件</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="label_28">
+       <property name="geometry">
+        <rect>
+         <x>1</x>
+         <y>70</y>
+         <width>141</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>&lt;h2&gt;软件栏背景样式:&lt;/h2&gt;</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="RuanBackgroundPhotoLineEdit">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>99</y>
+         <width>571</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QCheckBox" name="RuanMode">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>99</y>
+         <width>73</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>图片模式</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="RuanBackgroundColorLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>70</x>
+         <y>128</y>
+         <width>621</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>rgb(60, 67, 83);</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

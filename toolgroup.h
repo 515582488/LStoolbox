@@ -11,6 +11,7 @@
 #include <QProcess>
 #include <QThread>
 #include <QGuiApplication>
+#include <QFileDialog>
 
 namespace Ui {
 class ToolGroup;

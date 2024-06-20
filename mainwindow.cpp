@@ -24,7 +24,7 @@ protected:
             return result;
         };
         ServerTime = ProcesVoid("powershell \"$bootTime = (Get-CimInstance -ClassName Win32_OperatingSystem).LastBootUpTime.DateTime; $currentTime = Get-Date; New-TimeSpan -Start $bootTime -End $currentTime\"");
-        ServerTime = QString::fromStdString(ServerTime.toStdString().substr(ServerTime.toStdString().find(":")+2,ServerTime.toStdString().find("H")-7))+"天"+ QString::fromStdString(ServerTime.toStdString().substr(ServerTime.toStdString().find("Hours")+8,ServerTime.toStdString().find("Minutes")-16))+"时"+ QString::fromStdString(ServerTime.toStdString().substr(ServerTime.toStdString().find("Minutes")+10,ServerTime.toStdString().find("Seconds")-28))+"分";
+        ServerTime = QString::fromStdString(ServerTime.toStdString().substr(ServerTime.toStdString().find(":")+2,ServerTime.toStdString().find("H")-7))+"天"+ QString::fromStdString(ServerTime.toStdString().substr(ServerTime.toStdString().find("Hours")+8,ServerTime.toStdString().find("Minutes")-16))+"时"+ QString::fromStdString(ServerTime.toStdString().substr(ServerTime.toStdString().find("Minutes")+10,ServerTime.toStdString().find("Seconds")-27))+"分";
 
         QThread::msleep(10000);
         quit();
@@ -36,14 +36,199 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    MainWindow::setWindowFlags(Qt::FramelessWindowHint);
+    MainWindow::setWindowFlag(Qt::FramelessWindowHint,true);
     setAttribute(Qt::WA_Hover);//鼠标追踪
+    setWindowIcon(QIcon("://logo.png"));
 
     addrs = QCoreApplication::applicationDirPath() + "/Tool/Main";
     ui->mianEXE->raise();//设置如果重叠显示在最上层
     ToolGroup *Tool = new ToolGroup(ui->mianEXE);
     NowTime *nowtime = new NowTime;//更新事件线程
     nowtime->start();
+
+
+
+
+
+
+    //加载设置
+    QFile fileMainSetting("./Data/mainSetting.dat");//基础设置
+    if (fileMainSetting.open(QIODevice::ReadOnly)) {
+        QDataStream in(&fileMainSetting);  // 使用 QDataStream 从二进制文件中读取数据
+        in.setVersion(QDataStream::Qt_5_14);
+        qreal diaphaneity;//透明度
+        in >> diaphaneity;
+        fileMainSetting.close();
+        //读取完了进行设置
+        this->setWindowOpacity(diaphaneity);
+    }else{QMessageBox::warning(this,"警告","设置数据读取失败","确定","关闭");}
+    //样式页面背景样式
+    QFile fileStyleBackgroundSetting("./Data/Style/LanMuBackground.dat");
+    if (fileStyleBackgroundSetting.open(QIODevice::ReadOnly)) {
+        QDataStream in(&fileStyleBackgroundSetting);  // 使用 QDataStream 从二进制文件中读取数据
+        in.setVersion(QDataStream::Qt_5_14);  // 设置数据版本
+
+        bool LanMuPhotoMode;//是否图片模式
+        QString LanMuPhotoLineEdit;//图片路径
+        QString LanMuColorLineEdit;//颜色字符
+
+        QString BoxNameLineEdit;//工具箱名字
+        QString BoxNameStyleLineEdit;//工具箱名字样式
+        QString FenGeColorLineEdit;//分割线颜色
+
+        bool ListPhotoMode;//是否图片模式
+        QString ListPhotoLineEdit;//图片路径
+        QString ListColorLineEdit;//颜色字符
+
+        in >> LanMuPhotoMode >> LanMuPhotoLineEdit >> LanMuColorLineEdit\
+           >> BoxNameLineEdit >> BoxNameStyleLineEdit\
+           >> FenGeColorLineEdit\
+           >> ListPhotoMode >> ListPhotoLineEdit >> ListColorLineEdit;
+        fileStyleBackgroundSetting.close();
+
+        if(LanMuPhotoMode){//背景设置
+            ui->centralwidget->setStyleSheet("background-image: url("+ LanMuPhotoLineEdit +");");
+        }else{
+            ui->centralwidget->setStyleSheet("background-color: "+LanMuColorLineEdit+";");
+        }
+
+        ui->Title->setText(BoxNameLineEdit);
+        ui->Title->setPalette(QPalette(BoxNameStyleLineEdit));
+
+        if(ListPhotoMode){
+            ui->ListWidget->setStyleSheet("background-image: url("+ ListPhotoLineEdit +");");
+        }else{
+            ui->ListWidget->setStyleSheet("background-color: "+ListColorLineEdit+";");
+        }
+    }
+    QFile fileStyleLanButtonSetting("./Data/Style/LanMuButton.dat");//基础设置
+    if (fileStyleLanButtonSetting.open(QIODevice::ReadOnly)) {
+        QDataStream in(&fileStyleLanButtonSetting);  // 使用 QDataStream 从二进制文件中读取数据
+        in.setVersion(QDataStream::Qt_5_14);
+
+        QString ButtonStyleLineEdit;
+        QString ButtonFontColorLineEdit;
+
+        QString List1;
+        QString List2;
+        QString List3;
+        QString List4;
+        QString List5;
+        QString List6;
+        QString List7;
+        QString List8;
+        QString List9;
+        QString List10;
+        QString List11;
+        QString List12;
+
+
+        in >> ButtonStyleLineEdit >> ButtonFontColorLineEdit\
+            >> List1 >> List2 >> List3 >> List4 >> List5 >> List6 >> List7 >> List8 >> List9 >> List10 >> List11 >> List12;
+
+        fileStyleLanButtonSetting.close();
+        //读取完了进行设置
+        ui->indexButton->setText(List1);
+        ui->CpuButton->setText(List2);
+        ui->motherboardButton->setText(List3);
+        ui->MemoryButton->setText(List4);
+        ui->GpuButton->setText(List5);
+        ui->diskButton->setText(List6);
+        ui->screenButton->setText(List7);
+        ui->comprehensiveButton->setText(List8);
+        ui->peripheralButton->setText(List9);
+        ui->roastButton->setText(List10);
+        ui->gameButton->setText(List11);
+        ui->otherButton->setText(List12);
+
+        ui->indexButton->setStyleSheet(ButtonStyleLineEdit);
+        ui->CpuButton->setStyleSheet(ButtonStyleLineEdit);
+        ui->motherboardButton->setStyleSheet(ButtonStyleLineEdit);
+        ui->MemoryButton->setStyleSheet(ButtonStyleLineEdit);
+        ui->GpuButton->setStyleSheet(ButtonStyleLineEdit);
+        ui->diskButton->setStyleSheet(ButtonStyleLineEdit);
+        ui->screenButton->setStyleSheet(ButtonStyleLineEdit);
+        ui->comprehensiveButton->setStyleSheet(ButtonStyleLineEdit);
+        ui->peripheralButton->setStyleSheet(ButtonStyleLineEdit);
+        ui->roastButton->setStyleSheet(ButtonStyleLineEdit);
+        ui->gameButton->setStyleSheet(ButtonStyleLineEdit);
+        ui->otherButton->setStyleSheet(ButtonStyleLineEdit);
+
+        ui->ListWidget->setStyleSheet(ui->ListWidget->styleSheet() + "color:" + ButtonFontColorLineEdit + ";");
+    }
+    QFile fileDingSetting("./Data/Style/DingBu.dat");
+    if (fileDingSetting.open(QIODevice::ReadOnly)) {
+        QDataStream in(&fileDingSetting);  // 使用 QDataStream 从二进制文件中读取数据
+        in.setVersion(QDataStream::Qt_5_14);
+
+        bool DingBuMode;
+        QString DingBuPhotoLineEdit;
+        QString DingBuColorLineEdit;
+        QString DingBuButtonColorLineEdit;
+
+
+        in >> DingBuMode >> DingBuPhotoLineEdit >> DingBuColorLineEdit >> DingBuButtonColorLineEdit;
+
+        fileDingSetting.close();
+        if(DingBuMode){
+            ui->widget->setStyleSheet("background-image: url("+ DingBuPhotoLineEdit +");");
+        }else{
+            ui->widget->setStyleSheet("background-color: "+DingBuColorLineEdit+";");
+        }
+        ui->AttrWindow->setStyleSheet(DingBuButtonColorLineEdit);
+        ui->SmallWindow->setStyleSheet(DingBuButtonColorLineEdit);
+        ui->CloseWindow->setStyleSheet(DingBuButtonColorLineEdit);
+    }
+    QFile fileStateSetting("./Data/Style/State.dat");
+    if (fileStateSetting.open(QIODevice::ReadOnly)) {
+        QDataStream in(&fileStateSetting);  // 使用 QDataStream 从二进制文件中读取数据
+        in.setVersion(QDataStream::Qt_5_14);
+
+        bool StateMode;
+        QString StatePhotoLineEdit;
+        QString StateColorLineEdit;
+        QString lineEdit_54;
+
+
+        in >> StateMode >> StatePhotoLineEdit >> StateColorLineEdit >> lineEdit_54;
+
+        fileStateSetting.close();
+        if(StateMode){
+            ui->widget_3->setStyleSheet("background-image: url("+ StatePhotoLineEdit +");color:"+lineEdit_54+";");
+            ui->widget_4->setStyleSheet("background-image: url("+ StatePhotoLineEdit +");color:"+lineEdit_54+";");
+            ui->widget_5->setStyleSheet("background-image: url("+ StatePhotoLineEdit +");color:"+lineEdit_54+";");
+        }else{
+            ui->widget_3->setStyleSheet("background-color: "+StateColorLineEdit+";color:"+lineEdit_54+";");
+            ui->widget_4->setStyleSheet("background-color: "+StateColorLineEdit+";color:"+lineEdit_54+";");
+            ui->widget_5->setStyleSheet("background-color: "+StateColorLineEdit+";color:"+lineEdit_54+";");
+        }
+    }
+    QFile fileRuanSetting("./Data/Style/Ruan.dat");
+    if (fileRuanSetting.open(QIODevice::ReadOnly)) {
+        QDataStream in(&fileRuanSetting);  // 使用 QDataStream 从二进制文件中读取数据
+        in.setVersion(QDataStream::Qt_5_14);
+
+        QString RuanColorLineEdit;
+        bool RuanMode;
+        QString RuanBackgroundPhotoLineEdit;
+        QString RuanBackgroundColorLineEdit;
+
+
+        in >> RuanColorLineEdit >> RuanMode >> RuanBackgroundPhotoLineEdit >> RuanBackgroundColorLineEdit;
+
+        fileRuanSetting.close();
+
+        if(RuanMode){
+            ui->mianEXE->setStyleSheet("background-image: url("+ RuanBackgroundPhotoLineEdit +");color:"+RuanColorLineEdit+";");
+        }else{
+            ui->mianEXE->setStyleSheet("background-color: "+RuanBackgroundColorLineEdit+";color:"+RuanColorLineEdit+";");
+        }
+    }
+
+
+
+
+
 
 
 
@@ -76,11 +261,192 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(ui->CloseWindow,&QPushButton::clicked,this,[=](){this->close();});//关闭窗口
     connect(ui->SmallWindow,&QPushButton::clicked,this,[=](){this->showMinimized();});//窗口最小化
+    connect(ui->AttrWindow,&QPushButton::clicked,this,[=](){//设置页面
+        Setting *settingWidget = new Setting();
+        settingWidget->show();
+        settingWidget->setAttribute(Qt::WA_DeleteOnClose,true);
+
+        connect(settingWidget,&QWidget::destroyed,this,[=](){//当窗口关闭
+            QFile file("./Data/mainSetting.dat");//基础设置
+            if (file.open(QIODevice::ReadOnly)) {
+                QDataStream in(&file);  // 使用 QDataStream 从二进制文件中读取数据
+                in.setVersion(QDataStream::Qt_5_14);
+                qreal diaphaneity;//透明度
+                in >> diaphaneity;
+                file.close();
+                //读取完了进行设置
+                this->setWindowOpacity(diaphaneity);
+            }else{QMessageBox::warning(this,"警告","设置数据读取失败","确定","关闭");}
+            //样式页面背景样式
+            QFile fileStyleBackgroundSetting("./Data/Style/LanMuBackground.dat");
+            if (fileStyleBackgroundSetting.open(QIODevice::ReadOnly)) {
+                QDataStream in(&fileStyleBackgroundSetting);  // 使用 QDataStream 从二进制文件中读取数据
+                in.setVersion(QDataStream::Qt_5_14);  // 设置数据版本
+
+                bool LanMuPhotoMode;//是否图片模式
+                QString LanMuPhotoLineEdit;//图片路径
+                QString LanMuColorLineEdit;//颜色字符
+
+                QString BoxNameLineEdit;//工具箱名字
+                QString BoxNameStyleLineEdit;//工具箱名字样式
+                QString FenGeColorLineEdit;//分割线颜色
+
+                bool ListPhotoMode;//是否图片模式
+                QString ListPhotoLineEdit;//图片路径
+                QString ListColorLineEdit;//颜色字符
+
+                in >> LanMuPhotoMode >> LanMuPhotoLineEdit >> LanMuColorLineEdit\
+                   >> BoxNameLineEdit >> BoxNameStyleLineEdit\
+                   >> FenGeColorLineEdit\
+                   >> ListPhotoMode >> ListPhotoLineEdit >> ListColorLineEdit;
+                fileStyleBackgroundSetting.close();
+
+                if(LanMuPhotoMode){//背景设置
+                    ui->centralwidget->setStyleSheet("background-image: url("+ LanMuPhotoLineEdit +");");
+                }else{
+                    ui->centralwidget->setStyleSheet("background-color: "+LanMuColorLineEdit+";");
+                }
+
+                ui->Title->setText(BoxNameLineEdit);
+                ui->Title->setPalette(QPalette(BoxNameStyleLineEdit));
+
+                if(ListPhotoMode){
+                    ui->ListWidget->setStyleSheet("background-image: url("+ ListPhotoLineEdit +");");
+                }else{
+                    ui->ListWidget->setStyleSheet("background-color: "+ListColorLineEdit+";");
+                }
+            }else{QMessageBox::warning(this,"警告","设置数据读取失败","确定","关闭");}
+            QFile fileStyleLanButtonSetting("./Data/Style/LanMuButton.dat");//基础设置
+            if (fileStyleLanButtonSetting.open(QIODevice::ReadOnly)) {
+                QDataStream in(&fileStyleLanButtonSetting);  // 使用 QDataStream 从二进制文件中读取数据
+                in.setVersion(QDataStream::Qt_5_14);
+
+                QString ButtonStyleLineEdit;
+                QString ButtonFontColorLineEdit;
+
+                QString List1;
+                QString List2;
+                QString List3;
+                QString List4;
+                QString List5;
+                QString List6;
+                QString List7;
+                QString List8;
+                QString List9;
+                QString List10;
+                QString List11;
+                QString List12;
+
+
+                in >> ButtonStyleLineEdit >> ButtonFontColorLineEdit\
+                    >> List1 >> List2 >> List3 >> List4 >> List5 >> List6 >> List7 >> List8 >> List9 >> List10 >> List11 >> List12;
+
+                fileStyleLanButtonSetting.close();
+                //读取完了进行设置
+                ui->indexButton->setText(List1);
+                ui->CpuButton->setText(List2);
+                ui->motherboardButton->setText(List3);
+                ui->MemoryButton->setText(List4);
+                ui->GpuButton->setText(List5);
+                ui->diskButton->setText(List6);
+                ui->screenButton->setText(List7);
+                ui->comprehensiveButton->setText(List8);
+                ui->peripheralButton->setText(List9);
+                ui->roastButton->setText(List10);
+                ui->gameButton->setText(List11);
+                ui->otherButton->setText(List12);
+
+                ui->indexButton->setStyleSheet(ButtonStyleLineEdit);
+                ui->CpuButton->setStyleSheet(ButtonStyleLineEdit);
+                ui->motherboardButton->setStyleSheet(ButtonStyleLineEdit);
+                ui->MemoryButton->setStyleSheet(ButtonStyleLineEdit);
+                ui->GpuButton->setStyleSheet(ButtonStyleLineEdit);
+                ui->diskButton->setStyleSheet(ButtonStyleLineEdit);
+                ui->screenButton->setStyleSheet(ButtonStyleLineEdit);
+                ui->comprehensiveButton->setStyleSheet(ButtonStyleLineEdit);
+                ui->peripheralButton->setStyleSheet(ButtonStyleLineEdit);
+                ui->roastButton->setStyleSheet(ButtonStyleLineEdit);
+                ui->gameButton->setStyleSheet(ButtonStyleLineEdit);
+                ui->otherButton->setStyleSheet(ButtonStyleLineEdit);
+
+                ui->ListWidget->setStyleSheet(ui->ListWidget->styleSheet() + "color:" + ButtonFontColorLineEdit + ";");
+            }
+            QFile fileDingSetting("./Data/Style/DingBu.dat");
+            if (fileDingSetting.open(QIODevice::ReadOnly)) {
+                QDataStream in(&fileDingSetting);  // 使用 QDataStream 从二进制文件中读取数据
+                in.setVersion(QDataStream::Qt_5_14);
+
+                bool DingBuMode;
+                QString DingBuPhotoLineEdit;
+                QString DingBuColorLineEdit;
+                QString DingBuButtonColorLineEdit;
+                QString DingBuFontColorLineEdit;
+
+
+                in >> DingBuMode >> DingBuPhotoLineEdit >> DingBuColorLineEdit >> DingBuButtonColorLineEdit >> DingBuFontColorLineEdit;
+
+                fileDingSetting.close();
+                if(DingBuMode){
+                    ui->widget->setStyleSheet("background-image: url("+ DingBuPhotoLineEdit +");");
+                }else{
+                    ui->widget->setStyleSheet("background-color: "+DingBuColorLineEdit+";");
+                }
+                ui->AttrWindow->setStyleSheet(DingBuButtonColorLineEdit + ";color:"+DingBuFontColorLineEdit+";");
+                ui->SmallWindow->setStyleSheet(DingBuButtonColorLineEdit + ";color:"+DingBuFontColorLineEdit+";");
+                ui->CloseWindow->setStyleSheet(DingBuButtonColorLineEdit + ";color:"+DingBuFontColorLineEdit+";");
+            }
+            QFile fileStateSetting("./Data/Style/State.dat");
+            if (fileStateSetting.open(QIODevice::ReadOnly)) {
+                QDataStream in(&fileStateSetting);  // 使用 QDataStream 从二进制文件中读取数据
+                in.setVersion(QDataStream::Qt_5_14);
+
+                bool StateMode;
+                QString StatePhotoLineEdit;
+                QString StateColorLineEdit;
+                QString lineEdit_54;
+
+
+                in >> StateMode >> StatePhotoLineEdit >> StateColorLineEdit >> lineEdit_54;
+
+                fileStateSetting.close();
+                if(StateMode){
+                    ui->widget_3->setStyleSheet("background-image: url("+ StatePhotoLineEdit +");color:"+lineEdit_54+";");
+                    ui->widget_4->setStyleSheet("background-image: url("+ StatePhotoLineEdit +");color:"+lineEdit_54+";");
+                    ui->widget_5->setStyleSheet("background-image: url("+ StatePhotoLineEdit +");color:"+lineEdit_54+";");
+                }else{
+                    ui->widget_3->setStyleSheet("background-color: "+StateColorLineEdit+";color:"+lineEdit_54+";");
+                    ui->widget_4->setStyleSheet("background-color: "+StateColorLineEdit+";color:"+lineEdit_54+";");
+                    ui->widget_5->setStyleSheet("background-color: "+StateColorLineEdit+";color:"+lineEdit_54+";");
+                }
+            }
+            QFile fileRuanSetting("./Data/Style/Ruan.dat");
+            if (fileRuanSetting.open(QIODevice::ReadOnly)) {
+                QDataStream in(&fileRuanSetting);  // 使用 QDataStream 从二进制文件中读取数据
+                in.setVersion(QDataStream::Qt_5_14);
+
+                QString RuanColorLineEdit;
+                bool RuanMode;
+                QString RuanBackgroundPhotoLineEdit;
+                QString RuanBackgroundColorLineEdit;
+
+
+                in >> RuanColorLineEdit >> RuanMode >> RuanBackgroundPhotoLineEdit >> RuanBackgroundColorLineEdit;
+
+                fileRuanSetting.close();
+
+                if(RuanMode){
+                    ui->mianEXE->setStyleSheet("background-image: url("+ RuanBackgroundPhotoLineEdit +");color:"+RuanColorLineEdit+";");
+                }else{
+                    ui->mianEXE->setStyleSheet("background-color: "+RuanBackgroundColorLineEdit+";color:"+RuanColorLineEdit+";");
+                }
+            }
+        });
+    });
 
 
     //左侧列表
     connect(ui->indexButton,&QPushButton::clicked,this,[=](){listWidgetShow("/Tool/Main",true);Tool->renewList();});
-    connect(ui->CpuButton,&QPushButton::clicked,this,[=](){listWidgetShow("/Tool/CpuTool",false);Tool->renewList();});
+    connect(ui->CpuButton,&QPushButton::clicked,this,[=](){listWidgetShow("/Tool/Cpu",false);Tool->renewList();});
     connect(ui->otherButton,&QPushButton::clicked,this,[=](){listWidgetShow("/Tool/Other",false);Tool->renewList();});
     connect(ui->motherboardButton,&QPushButton::clicked,this,[=](){listWidgetShow("/Tool/Motherboard",false);Tool->renewList();});
     connect(ui->MemoryButton,&QPushButton::clicked,this,[=](){listWidgetShow("/Tool/Memory",false);Tool->renewList();});

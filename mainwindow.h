@@ -3,10 +3,11 @@
 
 #include <QMainWindow>
 #include "toolgroup.h"
+#include "setting.h"
 
 
 
-#include <QEvent>
+
 #include <QCloseEvent>
 #include <QMouseEvent>
 #include <QMouseEvent>
