@@ -26,14 +26,14 @@ ToolGroup::ToolGroup(QWidget *parent) :
     renewList();
 
     connect(ui->homeButton,&QPushButton::clicked,this,[=](){//返回最开始的页面
-        int number = addrs.toStdString().rfind("/Tool/")+6;
+        int number = addrs.toStdString().rfind("/Tool")+6;
         number = addrs.toStdString().find("/",number);
         addrs = QString::fromStdString(addrs.toStdString().substr(0,number));
         renewList();
     });
 
     connect(ui->backButton,&QPushButton::clicked,this,[=](){//上一页
-        int homeNumber = addrs.toStdString().rfind("/Tool/")+6;
+        int homeNumber = addrs.toStdString().rfind("/Tool")+6;
         homeNumber = addrs.toStdString().find("/",homeNumber);
         QString homeAddrs = QString::fromStdString(addrs.toStdString().substr(0,homeNumber));
         if(homeAddrs!=addrs){
@@ -46,6 +46,7 @@ ToolGroup::ToolGroup(QWidget *parent) :
 
     connect(ui->pushButton,&QPushButton::clicked,this,[=](){//添加按钮
         QString fileName = QFileDialog::getOpenFileName(this,tr("打开指定程序"), "选取文件", tr("Image Files (*.bat *.exe *.lnk)"));
+        if(fileName == NULL){return;}
         if(strstr(fileName.toStdString().c_str(),QCoreApplication::applicationDirPath().toStdString().c_str())==NULL){
             QMessageBox::warning(this,"警告","当前工具不在工具箱内!","确定","关闭");
             return;
@@ -57,7 +58,8 @@ ToolGroup::ToolGroup(QWidget *parent) :
                 LNumber++;
                 fileName = QString::fromStdString(fileName.toStdString().substr(0,fileName.toStdString().rfind("/")));
             }
-            while(LNumber!=3){
+            fileName +=".._";
+            while(LNumber!=2){
                 LNumber--;
                 fileName += ".._";
             }

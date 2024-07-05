@@ -49,8 +49,6 @@ MainWindow::MainWindow(QWidget *parent)
 
 
 
-
-
     //加载设置
     QFile fileMainSetting("./Data/mainSetting.dat");//基础设置
     if (fileMainSetting.open(QIODevice::ReadOnly)) {
