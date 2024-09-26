@@ -56,7 +56,7 @@ LS工具箱教学
 1.泪丘<br>
 [泪丘B站主页](https://space.bilibili.com/2065972905)
 </br>2.Sun_42
-[Sun_42 B站主页](https://space.bilibili.com/1265301910)
+</br>[Sun_42 B站主页](https://space.bilibili.com/1265301910)
 
 #### 网盘链接
 网盘链接：https://pan.baidu.com/s/11n07VtOEjLwSk7USMYFKtA?pwd=tool提取码：tool
